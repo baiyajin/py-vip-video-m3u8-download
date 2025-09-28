@@ -143,10 +143,10 @@ class SearchHistoryComponent:
         default_keyword = self.get_search_keyword_from_session()
         
         search_keyword = st.text_input(
-            "🔍 请输入搜索关键词",
+            "",  # 不显示标签，标签在主文件中显示
             value=default_keyword,
             placeholder=placeholder,
-            help="输入您想要搜索的视频关键词"
+            help=None  # 不显示问号图标
         )
         
         # 显示搜索建议

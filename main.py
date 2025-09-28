@@ -29,15 +29,20 @@ def main():
     sidebar_component.render_sidebar(search_history_component)
     
     # 主搜索区域
-    col1, col2 = st.columns([4, 1])
+    st.markdown("🔍 请输入搜索关键词")
+    
+    # 使用更精确的列宽比例来确保对齐
+    col1, col2 = st.columns([5, 1])
     
     with col1:
-        # 使用搜索历史组件渲染搜索输入框
+        # 使用搜索历史组件渲染搜索输入框（不显示标签）
         search_keyword = search_history_component.render_search_input(
             placeholder="例如：吴邪私家笔记、电影名称等..."
         )
     
     with col2:
+        # 添加一些顶部间距来对齐按钮
+        st.markdown("<br>", unsafe_allow_html=True)
         search_button = st.button("🔍 搜索", type="primary", use_container_width=True)
     
     # 搜索逻辑
