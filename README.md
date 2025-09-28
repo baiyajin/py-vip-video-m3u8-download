@@ -68,8 +68,8 @@ python run.py
 #### 前端服务
 ```bash
 cd web
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 ## 🌐 访问地址
