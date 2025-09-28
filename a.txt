@@ -1,0 +1,11 @@
+m3u8视频下载
+
+# 安装yt-dlp
+
+pip install yt-dlp
+
+# 下载视频
+
+yt-dlp --concurrent-fragments 1000 --retries 5 "https://v.lz15uu.com/20250402/2468_82fde383/index.m3u8"
+
+ffmpeg -i "https://v.lz15uu.com/20250402/2468_82fde383/index.m3u8" -c copy output.mp4
