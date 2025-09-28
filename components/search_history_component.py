@@ -114,39 +114,16 @@ class SearchHistoryComponent:
             status_color = "#dc3545"  # 红色
             status_text = "搜索失败"
         
-        # 创建搜索历史卡片
-        with st.container():
-            st.markdown(f"""
-            <div style="
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                padding: 10px;
-                margin: 5px 0;
-                background-color: #f8f9fa;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            ">
-                <div style="font-weight: bold; color: #333; font-size: 14px;">
-                    {item['keyword']}
-                </div>
-                <div style="font-size: 0.8em; color: #666; margin-top: 5px;">
-                    🔍 {item.get('search_count', 1)}次 | 
-                    📅 {time_str} | 
-                    <span style="color: {status_color}; font-weight: bold;">
-                        {status_icon} {status_text}
-                    </span>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # 添加点击搜索功能
-            if st.button(
-                f"🔍 搜索", 
-                key=f"history_search_{index}", 
-                help=f"重新搜索: {item['keyword']}"
-            ):
-                st.session_state['search_keyword'] = item['keyword']
-                st.rerun()
+        # 创建搜索历史卡片 - 使用按钮但样式像卡片
+        if st.button(
+            f"**{item['keyword']}**\n\n🔍 {item.get('search_count', 1)}次 | 📅 {time_str} | {status_icon} {status_text}",
+            key=f"history_search_{index}",
+            help=f"点击重新搜索: {item['keyword']}",
+            use_container_width=True,
+            type="secondary"
+        ):
+            st.session_state['search_keyword'] = item['keyword']
+            st.rerun()
     
     def add_search_record(self, keyword: str, result_count: int = 0):
         """添加搜索记录"""
